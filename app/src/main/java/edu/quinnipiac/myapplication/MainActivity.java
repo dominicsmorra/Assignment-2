@@ -144,13 +144,8 @@ public class MainActivity extends AppCompatActivity {
                     return null;
                 }
                 reader  = new BufferedReader(new InputStreamReader(in));
-                // call getBufferString to get the string from the buffer.
-
 
                 String quoteJSON = getBufferStringFromBuffer(reader).toString();
-
-
-                // call a method to parse the json data and return a string.
                 quote=  quoteHandler.getQuote(quoteJSON);
                 Intent intent = new Intent(MainActivity.this,QuoteActivity.class);
                 intent.putExtra("quote",quote);
