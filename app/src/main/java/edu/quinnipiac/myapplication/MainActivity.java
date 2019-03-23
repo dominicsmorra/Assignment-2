@@ -8,8 +8,11 @@ package edu.quinnipiac.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
@@ -18,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,8 +33,6 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
-    // Will contain the raw JSON response as a string.
-    String yearFactJsonStr = null;
 
     QuoteHandler quoteHandler = new QuoteHandler();
 
@@ -49,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
 
+        // Get the ActionProvider for later usage
+
+        // Get the ActionProvider for later usage
+        MenuItem shareItem =  menu.findItem(R.id.action_share);
+        provider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -62,16 +70,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
         switch (id){
-            case R.id.action_history:
-                Toast.makeText(this,"Here is the history of quotes",Toast.LENGTH_SHORT).show();
-                return  true;
             case R.id.action_like:
                 Toast.makeText(this,"I stand upon my desk to remind myself that we must constantly look at things in a different way by Robin Williams is my favorite quote",Toast.LENGTH_LONG).show();
                 return  true;
             case R.id.action_trending:
                 Toast.makeText(this,"What does not kill you makes you stronger will always be a hot quote",Toast.LENGTH_LONG).show();
                 return  true;
+            case R.id.action_help:
+                Toast.makeText(this,"This app uses Bestquotes API to get a random quote from their database and display it on screen",Toast.LENGTH_LONG).show();
+                return  true;
+            case R.id.action_blue:
+                ConstraintLayout background = (ConstraintLayout) findViewById(R.id.main);
+                background.setBackgroundColor(Color.BLUE);
+                Toast.makeText(this,"Background color changed to blue",Toast.LENGTH_LONG).show();
+                return  true;
+            case R.id.action_share:
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, "message");
+                provider.setShareIntent(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -80,9 +100,6 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        Button playButton = (Button) findViewById(R.id.buttonGo);
 
         String [] array = {"famous", "movies"};
 

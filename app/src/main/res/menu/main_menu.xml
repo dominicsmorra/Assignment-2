@@ -2,25 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_history"
-        android:title="History"
-        android:icon="@drawable/ic_action_history"
-        app:showAsAction="ifRoom" >
-    </item>
+
     <item
         android:id="@+id/action_like"
-        android:title="Settings"
+        android:title="FavQuote"
         android:icon="@drawable/ic_action_like"
-        app:showAsAction="ifRoom" >
+        app:showAsAction="always" >
+    </item>
+
+    <item
+        android:id="@+id/action_help"
+        android:title="Help"
+        android:icon="@drawable/ic_action_help"
+        app:showAsAction="always" >
     </item>
 
     <item
         android:id="@+id/action_trending"
         android:title="Trending"
         android:icon="@drawable/ic_action_trending"
-        app:showAsAction="ifRoom" >
+        app:showAsAction="always" >
     </item>
+
+    <item
+        android:id="@+id/action_blue"
+        android:title="Blue"
+        android:icon="@drawable/ic_action_blue"
+        app:showAsAction="always" >
+    </item>
+
+    <item android:id="@+id/action_share"
+        android:title="Share"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
 
 
 </menu>

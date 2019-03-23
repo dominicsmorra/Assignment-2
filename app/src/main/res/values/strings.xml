@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Random Quotes</string>
     <string name="firstText">Hit GO to get a random quote by a famous person.</string>
-
 </resources>
