@@ -20,8 +20,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.SearchView;
 import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.IOException;
