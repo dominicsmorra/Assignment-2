@@ -1,3 +1,7 @@
+//Dominic Smorra
+//SER 210
+// Quote App
+
 package edu.quinnipiac.myapplication;
 
 
@@ -6,21 +10,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,13 +35,16 @@ public class MainActivity extends AppCompatActivity {
     QuoteHandler quoteHandler = new QuoteHandler();
 
     boolean userSelect = false;
-    private String spinnerItemSelect;
     private String full = "https://qvoca-bestquotes-v1.p.rapidapi.com/quote";
-    private String url1 = "https://andruxnet-random-famous-quotes.p.rapidapi.com/?count=10";
-    private String type;
-    private String url2= "&cat=" + type;
     private ShareActionProvider provider;
 
+    /*
+     *Creates the options menu
+     *
+     * @param the menu
+     *
+     * @return the call on the super method
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -51,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /*
+     *Does actions based on which option selected
+     *
+     * @param the menu item selected
+     *
+     * @return a boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -84,12 +92,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /*
+     *Handles the click on the go button
+     *
+     * @param the view
+     *
+     * @return nothing
+     */
     public void goHandler(View view){
         new FetchYearFact().execute();
-    }
-
-    public void spinnerSelect(AdapterView<?> parent, View view, int position, long id){
-        spinnerItemSelect = (String) parent.getItemAtPosition(position);
     }
 
 
@@ -100,8 +111,16 @@ public class MainActivity extends AppCompatActivity {
         userSelect = true;
 
     }
+
     private class FetchYearFact extends AsyncTask<String,Void,String>{
 
+        /*
+         *Gets the information from the Quote APi
+         *
+         * @param String params
+         *
+         * @return the quote
+         */
         @Override
         protected String doInBackground(String... params) {
 
@@ -158,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
             return quote;
         }
 
+
+        /*
+         *Gets the buffer string from the buffer
+         *
+         * @param the BufferedReader
+         *
+         * @return the StringBuffer
+         */
         private StringBuffer getBufferStringFromBuffer(BufferedReader br) throws Exception{
             Log.d("hello", "hello");
 

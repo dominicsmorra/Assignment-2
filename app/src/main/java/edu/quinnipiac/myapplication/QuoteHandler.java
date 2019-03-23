@@ -1,3 +1,7 @@
+//Dominic Smorra
+//SER 210
+// Quote App
+
 package edu.quinnipiac.myapplication;
 
 
@@ -12,6 +16,13 @@ public class QuoteHandler {
 
     }
 
+    /*
+     *Creates the quote string
+     *
+     * @param the quoteJSON String
+     *
+     * @return the quote
+     */
     public String getQuote(String quoteJSON) throws JSONException {
         String[] quoteInfo = {"" , ""};
         JSONObject quoteJSONObj = new JSONObject(quoteJSON);
