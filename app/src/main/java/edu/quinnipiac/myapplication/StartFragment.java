@@ -1,3 +1,6 @@
+//Dominic Smorra
+//SER 210
+// Quote App
 package edu.quinnipiac.myapplication;
 
 import android.app.Activity;

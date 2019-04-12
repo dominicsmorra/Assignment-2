@@ -1,3 +1,6 @@
+//Dominic Smorra
+//SER 210
+// Quote App
 package edu.quinnipiac.myapplication;
 
 import android.content.Context;
@@ -19,7 +22,6 @@ import android.widget.TextView;
  */
 public class QuoteFragment extends Fragment {
 
-    TextView textView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -40,7 +42,6 @@ public class QuoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         return inflater.inflate(R.layout.fragment_quote, container, false);
     }
