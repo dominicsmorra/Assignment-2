@@ -28,7 +28,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StartFragment.ToNextActivity{
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -162,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String quoteJSON = getBufferStringFromBuffer(reader).toString();
                 quote=  quoteHandler.getQuote(quoteJSON);
+                Log.d("QUOTE", quote);
                 Intent intent = new Intent(MainActivity.this,QuoteActivity.class);
                 intent.putExtra("quote",quote);
                 startActivity(intent);
