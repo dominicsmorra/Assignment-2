@@ -24,6 +24,7 @@ public class StartFragment extends Fragment {
 
     ToNextActivity myActivity;
 
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -36,9 +37,15 @@ public class StartFragment extends Fragment {
         // Required empty public constructor
     }
 
+    /*
+     *Calls the gohandler in main activity
+     *
+     *
+     */
     static interface ToNextActivity{
         void goHandler(View view);
     }
+
 
 
     @Override
@@ -48,6 +55,13 @@ public class StartFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_start2, container, false);
     }
 
+    /*
+     *Click handler for the button
+     *
+     * @param view
+     *
+     * @return nothing
+     */
     public void goHandler(View view){
         myActivity.goHandler(view);
     }
